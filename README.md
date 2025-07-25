@@ -4,7 +4,7 @@ A beautifully designed and responsive **restaurant website** built using **React
 
 ## 🚀 Live Demo
 
-🔗 [View Live Site](https://your-restaurant-site-url.com)
+🔗 [View Live Site](https://restaurant-website25.netlify.app/)
 
 ## 📸 Preview
 
@@ -38,7 +38,7 @@ A beautifully designed and responsive **restaurant website** built using **React
 
 Author
 Md. Tajul Islam
-🌐 Portfolio Website
+🌐 [Portfolio Website](https://tajulbappy.netlify.app/)
 📧 bappy042@gmail.com
 👨‍💻 [GitHub](https://github.com/tajulbappy)
 
