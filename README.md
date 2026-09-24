@@ -1,4 +1,4 @@
-# 🍽️ Restaurant Website
+# 🍽️ Mdern Restaurant Website
 
 A beautifully designed and responsive **restaurant website** built using **React.js**, **React routing**, styled with **Bootstrap** and enhanced with **Google Fonts**, **React Icons**, and high-quality **Unsplash** images. This project is optimized for performance and user experience using **Vite** as the build tool.
 
