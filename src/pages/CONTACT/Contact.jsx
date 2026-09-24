@@ -1,80 +1,162 @@
-import React from "react";
-import { Form } from "react-bootstrap";
+// @ts-nocheck
+import React, { useState } from "react";
+import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
 
-import "../CONTACT/ContactStyles.css";
-import ContactInfo from "../../components/CONTACTINFO/ContactInfo";
-import Reviews from '../../components/REVIEWS/Reviews'
+import PageHeader from "../../components/PageHeader";
+import ContactInfo from "../../components/ContactInfo";
+import Reviews from "../../components/Reviews";
+import ContactPageImg from "../../assets/images/contact-page-img.jpg";
 
+import "./Contact.css";
 
 const Contact = () => {
+  const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    date: "",
+    guests: "",
+    comments: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+    setSubmitted(true);
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      date: "",
+      guests: "",
+      comments: "",
+    });
+    setTimeout(() => setSubmitted(false), 5000);
+  };
+
   return (
     <div className="contact-page">
-      <header className="mt-5">
-        <div className="container h-100 d-flex align-items-center justify-content-center">
-          <h1 className="text-light">Contact</h1>
-        </div>
-      </header>
+      <PageHeader title="Contact" background={ContactPageImg} />
 
-      <div className="container my-5">
-        <div className="row">
-          <div className="col-lg-6 d-flex align-items-center justify-content-center">
+      <Container className="py-5">
+        <Row className="g-5">
+          <Col lg={5}>
             <ContactInfo />
-          </div>
+          </Col>
 
-          <div className="col-lg-6 d-flex justify-content-center">
-            <Form>
-              <Form.Group className="row mb-3">
-                <div className="col-md-6">
-                  <Form.Label htmlFor="first-name">First Name</Form.Label>
-                  <Form.Control type="text" id="first-name" />
-                </div>
-                <div className="col-md-6">
-                  <Form.Label htmlFor="last-name">Last Name</Form.Label>
-                  <Form.Control type="text" id="last-name" />
-                </div>
-              </Form.Group>
+          <Col lg={7}>
+            <div className="bg-light p-4 rounded shadow-sm">
+              <h3 className="mb-4">Reserve Your Table</h3>
 
-              <Form.Group className="row mb-3">
-                <div className="col-md-6">
-                  <Form.Label htmlFor="email-address">Email Address</Form.Label>
-                  <Form.Control type="email" id="email-address" />
-                </div>
-                <div className="col-md-6">
-                  <Form.Label htmlFor="phone-number">Phone Number</Form.Label>
-                  <Form.Control type="tel" id="phone-number" />
-                </div>
-              </Form.Group>
+              {submitted && (
+                <Alert variant="success">
+                  ✅ Thank you! Your reservation request has been received. We
+                  will contact you shortly.
+                </Alert>
+              )}
 
-              <Form.Group className="row mb-3">
-                <div className="col-md-6">
-                  <Form.Label htmlFor="date">Date</Form.Label>
+              <Form onSubmit={handleSubmit}>
+                <Row className="mb-3">
+                  <Col md={6}>
+                    <Form.Label>First Name</Form.Label>
+                    <Form.Control
+                      type="text"
+                      id="firstName"
+                      value={formData.firstName}
+                      onChange={handleChange}
+                      required
+                    />
+                  </Col>
+                  <Col md={6}>
+                    <Form.Label>Last Name</Form.Label>
+                    <Form.Control
+                      type="text"
+                      id="lastName"
+                      value={formData.lastName}
+                      onChange={handleChange}
+                      required
+                    />
+                  </Col>
+                </Row>
+
+                <Row className="mb-3">
+                  <Col md={6}>
+                    <Form.Label>Email Address</Form.Label>
+                    <Form.Control
+                      type="email"
+                      id="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                    />
+                  </Col>
+                  <Col md={6}>
+                    <Form.Label>Phone Number</Form.Label>
+                    <Form.Control
+                      type="tel"
+                      id="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                    />
+                  </Col>
+                </Row>
+
+                <Row className="mb-3">
+                  <Col md={6}>
+                    <Form.Label>Date</Form.Label>
+                    <Form.Control
+                      type="date"
+                      id="date"
+                      value={formData.date}
+                      onChange={handleChange}
+                    />
+                  </Col>
+                  <Col md={6}>
+                    <Form.Label>Number of Guests</Form.Label>
+                    <Form.Control
+                      type="number"
+                      id="guests"
+                      min="1"
+                      value={formData.guests}
+                      onChange={handleChange}
+                    />
+                  </Col>
+                </Row>
+
+                <Form.Group className="mb-4">
+                  <Form.Label>Comments</Form.Label>
                   <Form.Control
-                    type="date"
-                    id="date"
-                    placeholder="dd/mm/yyyy"
+                    as="textarea"
+                    rows={3}
+                    id="comments"
+                    value={formData.comments}
+                    onChange={handleChange}
                   />
-                </div>
-                <div className="col-md-6">
-                  <Form.Label htmlFor="guest-number">
-                    Number of Guests
-                  </Form.Label>
-                  <Form.Control type="number" id="guest-number" />
-                </div>
-              </Form.Group>
+                </Form.Group>
 
-              <Form.Group className="row mb-4">
-                <Form.Label htmlFor="comments">Comments</Form.Label>
-                <Form.Control type="textarea" id="comments" />
-              </Form.Group>
-
-              <button type="submit" className="btn btn-success btn-lg" >Submit</button>
-            </Form>
-          </div>
-        </div>
-      </div>
+                <Button
+                  type="submit"
+                  variant="success"
+                  size="lg"
+                  className="w-100"
+                >
+                  Submit Reservation
+                </Button>
+              </Form>
+            </div>
+          </Col>
+        </Row>
+      </Container>
 
       <div className="bg-dark text-light py-5">
-        <Reviews/>
+        <Reviews />
       </div>
     </div>
   );

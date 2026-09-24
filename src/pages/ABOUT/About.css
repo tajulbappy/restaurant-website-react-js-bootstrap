@@ -1,0 +1,7 @@
+/* About page specific styles */
+.about-page img {
+  transition: var(--transition);
+}
+.about-page img:hover {
+  transform: scale(1.02);
+}

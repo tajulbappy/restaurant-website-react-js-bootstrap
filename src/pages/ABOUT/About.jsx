@@ -1,68 +1,72 @@
 // @ts-nocheck
 import React from "react";
-import "../ABOUT/AboutStyles.css";
-import AboutChef1 from "../../assets/utils/images/about-chef1.jpg";
-import AboutChef2 from "../../assets/utils/images/about-chef2.jpg";
-import ImageGallery from "../../components/IMAGEGALLARY/ImageGallery";
-import Reviews from "../../components/REVIEWS/Reviews";
+import { Container, Row, Col } from "react-bootstrap";
+
+import PageHeader from "../../components/PageHeader";
+import ImageGallery from "../../components/ImageGallery";
+import Reviews from "../../components/Reviews";
+
+import AboutPageImg from "../../assets/images/about-page-img.jpg";
+import AboutChef1 from "../../assets/images/about-chef1.jpg";
+import AboutChef2 from "../../assets/images/about-chef2.jpg";
+
+import "./About.css";
 
 const About = () => {
   return (
     <div className="about-page">
-      <header className="mt-5">
-        <div className="container h-100 d-flex align-items-center justify-content-center">
-          <h1 className="text-light">About</h1>
-        </div>
-      </header>
+      <PageHeader title="About" background={AboutPageImg} />
 
-      <div className="container my-5">
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia
-          voluptate nisi cumque est molestiae officiis tenetur repellat expedita
-          totam maiores porro nobis ea quidem, voluptatibus at fugiat deserunt
-          iure velit reiciendis animi assumenda sequi hic! Ipsum esse quos
-          dolorem reiciendis at, neque et, culpa amet harum, saepe tenetur sunt
-          ipsa!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Est saepe
-          rem, quam sed, esse aliquid earum unde ipsa laborum alias magni
-          officia repudiandae, aut nobis maiores distinctio voluptatibus vero
-          asperiores dolorum ad accusamus nostrum ea porro. Esse nulla sunt
-          porro ipsum, accusantium facilis vitae non ipsa repellendus eum fuga
-          quas, quae sit architecto necessitatibus maxime quia quis nesciunt
-          repellat ullam expedita debitis. Officia quam, ducimus sit pariatur
-          delectus ipsum laboriosam, eius molestiae numquam veniam iusto, error
-          harum aliquid voluptas! Vel!
-        </p>
+      <Container className="py-5">
+        <Row className="justify-content-center">
+          <Col lg={10}>
+            <h2 className="section-title text-start">Our Story</h2>
+            <p className="text-muted">
+              Founded in 2010, React Restaurant began with a simple vision — to
+              create a place where exceptional food meets warm hospitality. What
+              started as a small family kitchen has grown into one of London's
+              most loved dining destinations.
+            </p>
+            <p className="text-muted">
+              Every dish we serve is a reflection of our commitment to quality,
+              freshness, and passion for food. Our chefs source ingredients from
+              local farms and trusted suppliers, ensuring every bite is
+              memorable.
+            </p>
 
-        <div className="row">
-          <div className="col-lg-6">
-            <img src={AboutChef1} alt="" className="img-fluid my-4" />
-          </div>
-          <div className="col-lg-6">
-            <img src={AboutChef2} alt="" className="img-fluid my-4" />
-          </div>
-        </div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil
-          molestias labore dicta eius neque accusantium, at sequi repudiandae
-          maxime officiis, modi, consequuntur voluptas a eaque enim. Possimus
-          soluta dolores, ducimus labore saepe quam ipsa exercitationem veniam
-          nobis autem quia quod repellat magnam debitis nihil similique totam
-          minima iusto optio repellendus veritatis, unde aliquid quo? Nemo sit
-          fugit ratione nulla, magnam dicta perferendis officia veritatis
-          adipisci distinctio veniam odio laborum accusantium quod esse omnis?
-          Pariatur assumenda incidunt sit beatae quo sunt enim minima iusto quae
-          hic perferendis libero, tempore maiores obcaecati!
-        </p>
-      </div>
+            <Row className="my-5 g-4">
+              <Col md={6}>
+                <img
+                  src={AboutChef1}
+                  alt="Chef 1"
+                  className="img-fluid rounded shadow"
+                />
+              </Col>
+              <Col md={6}>
+                <img
+                  src={AboutChef2}
+                  alt="Chef 2"
+                  className="img-fluid rounded shadow"
+                />
+              </Col>
+            </Row>
+
+            <h3 className="section-title text-start">Our Mission</h3>
+            <p className="text-muted">
+              We believe dining is more than just eating — it's an experience.
+              Our mission is to bring people together around exceptional food,
+              creating memories that last a lifetime. From the first bite to the
+              last, we want every guest to feel at home.
+            </p>
+          </Col>
+        </Row>
+      </Container>
+
       <div className="bg-dark text-light">
         <ImageGallery />
       </div>
-      <div className="my-5">
-        <Reviews />
-      </div>
+
+      <Reviews />
     </div>
   );
 };

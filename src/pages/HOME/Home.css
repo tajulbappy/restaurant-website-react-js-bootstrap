@@ -1,0 +1,13 @@
+.home-page header h1 {
+  text-shadow: 2px 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+.home-page header {
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .home-page header h1 {
+    font-size: 3rem;
+  }
+}

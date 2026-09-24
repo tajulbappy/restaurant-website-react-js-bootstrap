@@ -1,112 +1,174 @@
 // @ts-nocheck
 import React from "react";
-import MenuBtn from "../../components/BUTTON/MenuBtn";
-import "../HOME/HomeStyles.css";
-import AboutImg from "../../assets/utils/images/about-img.jpg";
+import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import ImageGallery from "../../components/IMAGEGALLARY/ImageGallery";
-import ContactInfo from "../../components/CONTACTINFO/ContactInfo";
-import ContactImage from "../../assets/utils/images/contact-img.jpg";
+
+import MenuBtn from "../../components/MenuBtn";
+import ImageGallery from "../../components/ImageGallery";
+import ContactInfo from "../../components/ContactInfo";
+
+import AboutImg from "../../assets/images/about-img.jpg";
+import ContactImage from "../../assets/images/contact-img.jpg";
+import HeaderImg from "../../assets/images/header-img.jpg";
+import MenuImg from "../../assets/images/menu-img.jpg";
+
+import "./Home.css";
 
 const Home = () => {
   return (
     <div className="home-page">
-      <header className="h-100 min-vh-100 d-flex align-items-center text-light shadow">
-        <div className="container">
-          <div className="row">
-            <div className="col-sm-6 d-flex d-sm-block align-items-center">
-              <h2 className="mb-0 text-black fw-bold">Welcome To</h2>
-              <h1 className="mb-5 text-black fw-bold text-center text-sm-start">
-                React Restaurant
-              </h1>
-              <MenuBtn />
-            </div>
-          </div>
-        </div>
+      {/* HERO */}
+      <header
+        className="d-flex align-items-center text-light shadow"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url(${HeaderImg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          minHeight: "100vh",
+        }}
+      >
+        <Container>
+          <Row>
+            <Col lg={7} className="fade-in">
+              <p
+                className="text-warning text-uppercase fw-bold mb-2"
+                style={{ letterSpacing: "3px" }}
+              >
+                Welcome To
+              </p>
+              <h1 className="display-2 fw-bold mb-4">Neon Restaurant</h1>
+              <p className="lead mb-5 text-white-50">
+                Experience exceptional cuisine crafted with the finest
+                ingredients and served with passion.
+              </p>
+              <div className="d-flex gap-3 flex-wrap">
+                <MenuBtn />
+                <Link
+                  to="/contact"
+                  className="btn btn-outline-warning btn-lg px-4"
+                >
+                  Book a Table
+                </Link>
+              </div>
+            </Col>
+          </Row>
+        </Container>
       </header>
-      <div className="container my-5">
-        <div className="row">
-          <div className="col-lg-6 justify-content-center d-none  d-flex d-lg-flex">
-            <img src={AboutImg} alt="aboutImg" className="img-fluid w-50" />
-          </div>
-          <div className="col-lg-6 d-flex flex-column align-items-center justify-content-center">
-            <h2 className="fs-1 mb-5 text-uppercase">About Us</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Conseq
-              error perspiciatis tempora ducimus. Molestiae, et nihil! Nobis quo
-              molestias quas?
-            </p>
-            <p className="mb-5">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisqu
-              eaque odit mollitia ex ipsa quibusdam pariatur atque, eum
-              repellendus asperiores inventore tempore voluptatum ratione
-              delectus et illo saepe iste nobis!
-            </p>
 
-            <Link to="/about">
-              <button type="button" className="btn btn-outline-success btn-lg">
+      {/* ABOUT */}
+      <section className="py-5">
+        <Container>
+          <Row className="align-items-center g-5">
+            <Col lg={6}>
+              <img
+                src={AboutImg}
+                alt="About"
+                className="img-fluid rounded shadow"
+              />
+            </Col>
+            <Col lg={6}>
+              <h2 className="section-title text-start">About Us</h2>
+              <p className="text-muted">
+                Welcome to Neon Restaurant — where tradition meets innovation.
+                For over a decade we have been serving our guests with dishes
+                made from the freshest local ingredients.
+              </p>
+              <p className="text-muted mb-4">
+                Our chefs bring years of experience from around the world,
+                creating a menu that celebrates both classic flavors and modern
+                creativity.
+              </p>
+              <Link to="/about" className="btn btn-outline-success btn-lg px-4">
                 More About Us
-              </button>
-            </Link>
-          </div>
-        </div>
-      </div>
-      <div className="menu-section py-5 text-light shadow">
-        <div className="container d-flex flex-column align-items-center">
-          <h2 className="fs-1 mb-5 text-uppercase fw-bold">Our Favorites</h2>
-          <div className="row mb-5 w-100">
-            <div className="col-lg-6 d-flex flex-column align-items-center mb-5 mb-lg-0">
-              <h3 className="fs-2 mb-5">Food</h3>
-              <ul className="px-0">
-                <li className="d-flex justify-content-between">
-                  <p className="fs-3 mx-2">English Breakfast</p>
-                  <p className="fs-3 mx-2 text-success fw-bold">$12</p>
-                </li>
-                <li className="d-flex justify-content-between">
-                  <p className="fs-3 mx-2">Spicy Beef</p>
-                  <p className="fs-3 mx-2 text-success fw-bold">$15</p>
-                </li>
-                <li className="d-flex justify-content-between">
-                  <p className="fs-3 mx-2">Saghetti Bolognese</p>
-                  <p className="fs-3 mx-2 text-success fw-bold">$11</p>
-                </li>
+              </Link>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+      {/* FAVORITES */}
+      <section
+        className="py-5 text-light shadow"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(${MenuImg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+        }}
+      >
+        <Container className="d-flex flex-column align-items-center py-4">
+          <h2 className="section-title">Our Favorites</h2>
+
+          <Row className="w-100 g-5">
+            <Col lg={6}>
+              <h3 className="fs-2 mb-4 text-success text-center">Food</h3>
+              <ul className="list-unstyled">
+                {[
+                  { name: "English Breakfast", price: "$12" },
+                  { name: "Spicy Beef", price: "$15" },
+                  { name: "Spaghetti Bolognese", price: "$11" },
+                ].map((item) => (
+                  <li
+                    key={item.name}
+                    className="d-flex justify-content-between align-items-center py-2 border-bottom border-secondary"
+                  >
+                    <span className="fs-5">{item.name}</span>
+                    <span className="fs-5 text-success fw-bold">
+                      {item.price}
+                    </span>
+                  </li>
+                ))}
               </ul>
-            </div>
-            <div className="col-lg-6 d-flex flex-column align-items-center mb-5 mb-lg-0">
-              <h3 className="fs-2 mb-5">Drinks</h3>
-              <ul className="px-0">
-                <li className="d-flex justify-content-between">
-                  <p className="fs-3 mx-2">Coffee</p>
-                  <p className="fs-3 mx-2 text-success fw-bold">$2</p>
-                </li>
-                <li className="d-flex justify-content-between">
-                  <p className="fs-3 mx-2">Juice</p>
-                  <p className="fs-3 mx-2 text-success fw-bold">$1</p>
-                </li>
-                <li className="d-flex justify-content-between">
-                  <p className="fs-3 mx-2">Spirits</p>
-                  <p className="fs-3 mx-2 text-success fw-bold">$5</p>
-                </li>
+            </Col>
+
+            <Col lg={6}>
+              <h3 className="fs-2 mb-4 text-success text-center">Drinks</h3>
+              <ul className="list-unstyled">
+                {[
+                  { name: "Coffee", price: "$2" },
+                  { name: "Juice", price: "$1" },
+                  { name: "Spirits", price: "$5" },
+                ].map((item) => (
+                  <li
+                    key={item.name}
+                    className="d-flex justify-content-between align-items-center py-2 border-bottom border-secondary"
+                  >
+                    <span className="fs-5">{item.name}</span>
+                    <span className="fs-5 text-success fw-bold">
+                      {item.price}
+                    </span>
+                  </li>
+                ))}
               </ul>
-            </div>
+            </Col>
+          </Row>
+
+          <div className="mt-5">
+            <MenuBtn />
           </div>
-          <MenuBtn />
-        </div>
-      </div>
+        </Container>
+      </section>
+
+      {/* GALLERY */}
       <ImageGallery />
 
-      <div className="bg-dark text-light py-5 shadow">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-6 d-flex flex-column align-items-center justify-content-center mb-5 mb-lg-0">
+      {/* CONTACT */}
+      <section className="bg-dark text-light py-5 shadow">
+        <Container>
+          <Row className="align-items-center g-5">
+            <Col lg={6}>
               <ContactInfo />
-            </div>
-            <div className="col-lg-6 d-flex justify-content-center">
-              <img src={ContactImage} className="img-fluid w-50" alt="" />
-            </div>
-          </div>
-        </div>
-      </div>
+            </Col>
+            <Col lg={6} className="text-center">
+              <img
+                src={ContactImage}
+                alt="Contact"
+                className="img-fluid rounded shadow"
+              />
+            </Col>
+          </Row>
+        </Container>
+      </section>
     </div>
   );
 };
