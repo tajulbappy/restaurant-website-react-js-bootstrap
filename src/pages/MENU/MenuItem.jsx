@@ -1,4 +1,5 @@
 // @ts-nocheck
+// src/pages/Menu/MenuItem.jsx
 import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 
@@ -6,19 +7,28 @@ import BreakfastImg from "../../assets/images/breakfast.jpg";
 import LunchImg from "../../assets/images/lunch.jpg";
 import DinnerImg from "../../assets/images/dinner.jpg";
 import DessertImg from "../../assets/images/dessert.jpg";
-import menuData from "../../assets/Data/menuData";
 
-import "../MENU/Menu.css";
+import menuData from "../../assets/data/menuData";
 
+import "./Menu.css";
+
+// ✅ Rename `key` → `id` so we don't clash with React's reserved `key` prop
 const categories = [
-  { key: "breakfast", title: "Breakfast", image: BreakfastImg, dark: false },
-  { key: "lunch", title: "Lunch", image: LunchImg, dark: true },
-  { key: "dinner", title: "Dinner", image: DinnerImg, dark: false },
-  { key: "dessert", title: "Dessert", image: DessertImg, dark: true },
+  { id: "breakfast", title: "Breakfast", image: BreakfastImg, dark: false },
+  { id: "lunch", title: "Lunch", image: LunchImg, dark: true },
+  { id: "dinner", title: "Dinner", image: DinnerImg, dark: false },
+  { id: "dessert", title: "Dessert", image: DessertImg, dark: true },
 ];
 
 const CategorySection = ({ category, title, image, dark }) => {
-  const items = menuData.filter((item) => item.category === category);
+  // ✅ Safe filter — guards against missing/undefined category
+  const items = (menuData || []).filter((item) => {
+    if (!item || item.category == null) return false;
+    return (
+      String(item.category).trim().toLowerCase() ===
+      String(category).trim().toLowerCase()
+    );
+  });
 
   return (
     <section
@@ -40,6 +50,12 @@ const CategorySection = ({ category, title, image, dark }) => {
           </Col>
 
           <Col lg={6}>
+            {items.length === 0 && (
+              <p className={dark ? "text-white-50" : "text-muted"}>
+                No items available in this category.
+              </p>
+            )}
+
             {items.map((item) => (
               <Card
                 key={item.id}
@@ -80,10 +96,21 @@ const CategorySection = ({ category, title, image, dark }) => {
 };
 
 const MenuItem = () => {
+  // 🔍 DEBUG — inspect data shape
+  console.log("menuData loaded:", menuData);
+  console.log("First item:", menuData?.[0]);
+  console.log("First item category:", menuData?.[0]?.category);
+
   return (
     <>
       {categories.map((cat) => (
-        <CategorySection key={cat.key} {...cat} />
+        <CategorySection
+          key={cat.id} /* ✅ pass key directly */
+          category={cat.id} /* ✅ pass category explicitly */
+          title={cat.title}
+          image={cat.image}
+          dark={cat.dark}
+        />
       ))}
     </>
   );
