@@ -12,7 +12,7 @@ import ContactImage from "../../assets/images/contact-img.jpg";
 import HeaderImg from "../../assets/images/header-img.jpg";
 import MenuImg from "../../assets/images/menu-img.jpg";
 
-import "./Home.css";
+import "../HOME/Home.css";
 
 const Home = () => {
   return (

@@ -3,7 +3,7 @@ import React from "react";
 import PageHeader from "../../components/PageHeader";
 import MenuItem from "./MenuItem";
 import MenuBg from "../../assets/images/menu-img.jpg";
-import "./Menu.css";
+import "../MENU/Menu.css";
 
 const Menu = () => {
   return (

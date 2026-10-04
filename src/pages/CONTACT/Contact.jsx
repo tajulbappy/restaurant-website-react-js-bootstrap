@@ -7,7 +7,7 @@ import ContactInfo from "../../components/ContactInfo";
 import Reviews from "../../components/Reviews";
 import ContactPageImg from "../../assets/images/contact-page-img.jpg";
 
-import "./Contact.css";
+import "../CONTACT/Contact.css";
 
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false);

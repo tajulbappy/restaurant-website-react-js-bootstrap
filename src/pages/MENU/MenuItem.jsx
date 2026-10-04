@@ -8,7 +8,7 @@ import DinnerImg from "../../assets/images/dinner.jpg";
 import DessertImg from "../../assets/images/dessert.jpg";
 import menuData from "../../assets/data/menuData.js";
 
-import "./Menu.css";
+import "../MENU/Menu.css";
 
 const categories = [
   { key: "breakfast", title: "Breakfast", image: BreakfastImg, dark: false },

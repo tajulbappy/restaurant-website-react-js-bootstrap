@@ -10,7 +10,7 @@ import AboutPageImg from "../../assets/images/about-page-img.jpg";
 import AboutChef1 from "../../assets/images/about-chef1.jpg";
 import AboutChef2 from "../../assets/images/about-chef2.jpg";
 
-import "./About.css";
+import "../ABOUT/About.css";
 
 const About = () => {
   return (
