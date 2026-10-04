@@ -8,7 +8,7 @@ import LunchImg from "../../assets/images/lunch.jpg";
 import DinnerImg from "../../assets/images/dinner.jpg";
 import DessertImg from "../../assets/images/dessert.jpg";
 
-import menuData from "../../assets/data/menuData";
+import menuData from "../../assets/data/menuData.js";
 
 import "./Menu.css";
 
